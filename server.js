@@ -1,6 +1,8 @@
 var express = require('express')
 var app = express()
+var cors = require('cors');
 
+app.options('*', cors());
 app.get('/', function (req, res) {
     res.send('Hello World!')
 });
@@ -20,6 +22,7 @@ app.get('/products', function (req, res) {
             image: 'to/define',
         }
     ]
+    res.header('Access-Control-Allow-Origin', '*');
     res.send(products);
 });
 
